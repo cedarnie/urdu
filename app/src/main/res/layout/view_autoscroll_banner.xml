@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <urdu4android.onairm.com.urdu4android.tool.ScrollView.BannerViewPager
+            android:id="@+id/auto_scroll_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    <LinearLayout
+            android:id="@+id/auto_scroll_view_indicator"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="24dip"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dip"
+            android:gravity="center"/>
+
+</merge>

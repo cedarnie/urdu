@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/subTitleBar"
+        layout="@layout/com_title_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="@color/white"
+        android:layout_marginTop="20dp">
+
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/imageView_avatar"
+            android:src="@drawable/bingbing"
+            android:scaleType="centerCrop"
+            android:background="@drawable/corner_bg"
+            android:layout_alignParentTop="false"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="20dp"
+            android:layout_centerVertical="true" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FanBingbing"
+            android:textColor="@color/black"
+            android:id="@+id/textView_name"
+            android:textSize="16sp"
+            android:layout_alignTop="@+id/imageView_avatar"
+            android:layout_toRightOf="@+id/imageView_avatar"
+            android:layout_toEndOf="@+id/imageView_avatar"
+            android:layout_marginLeft="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1234@qq.com"
+            android:textColor="@color/black"
+            android:id="@+id/textView_email"
+            android:textSize="16sp"
+            android:layout_below="@+id/textView_name"
+            android:layout_toRightOf="@+id/imageView_avatar"
+            android:layout_toEndOf="@+id/imageView_avatar"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User name"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:id="@+id/textView_username"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_username_input"
+            android:textSize="16sp"
+            android:text="FanBingBing"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_alignTop="@+id/textView_username"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginTop="1.5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="City"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:id="@+id/textView_city"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_city_input"
+            android:textSize="16sp"
+            android:text="beijing"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_alignTop="@+id/textView_city"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginTop="1.5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:id="@+id/textView_gender"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_gender_input"
+            android:textSize="16sp"
+            android:text="female"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_alignTop="@+id/textView_gender"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:id="@+id/textView_email1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_email1_input"
+            android:textSize="16sp"
+            android:text="1234@qq.com"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_alignTop="@+id/textView_email1"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginTop="1.5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:id="@+id/textView_adress"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_adress_input"
+            android:textSize="16sp"
+            android:text="beijing"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_alignTop="@+id/textView_adress"/>
+    </RelativeLayout>
+
+</LinearLayout>

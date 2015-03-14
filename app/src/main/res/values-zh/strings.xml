@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">urdu4android</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="facebook_app_id">810185912407867</string>
+
+    <string name="live">直播</string>
+    <string name="video">视频</string>
+    <string name="novel">小说</string>
+    <string name="poem">诗歌</string>
+
+
+
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">邮箱</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="phone_num_can_not_be_empty">Phone number can\'t be empty</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="code_can_not_be_empty">Code can\'t be empty</string>
+    <string name="error_field_required">This field is required</string>
+
+</resources>

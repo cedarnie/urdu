@@ -1,0 +1,35 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+
+    <style name="transparent_button">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <!--导航栏-->
+    <style name="title_container">
+        <item name="android:background">@color/urdu_red</item>
+    </style>
+
+    <style name="titleProgressBar" parent="android:Widget.ProgressBar.Small" />
+
+    <style name="btn_transparent">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:scaleType">center</item>
+        <item name="android:padding">4dp</item>
+    </style>
+
+    <style name="title_text">
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+
+</resources>

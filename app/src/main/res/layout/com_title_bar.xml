@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:olive="http://schemas.android.com/apk/res-auto"
+    style="@style/title_container"
+    android:layout_width="match_parent"
+    android:layout_height="48dp">
+
+
+    <LinearLayout
+        android:id="@+id/titleTextContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="64dp"
+        android:layout_marginRight="64dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/titleText"
+            style="@style/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:maxWidth="230dp"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@style/titleProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:indeterminate="true"
+            android:max="100"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/titleBtnLeft"
+        style="@style/btn_transparent"
+        android:drawableLeft="@drawable/back"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/titleBtnRight"
+        style="@style/btn_transparent"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:textColor="@android:color/white" />
+    <!--<ImageView-->
+        <!--android:id="@+id/titleRightNewMessage"-->
+        <!--android:visibility="gone"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@drawable/ic_new_message_circle_small"-->
+        <!--android:layout_alignRight="@id/titleBtnRight"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:layout_marginRight="5dp" />-->
+</RelativeLayout>

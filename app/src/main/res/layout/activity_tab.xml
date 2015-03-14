@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.app.FragmentTabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/tabhost"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+
+            <FrameLayout
+                android:id="@+id/realtabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@android:id/tabs" />
+
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/tab_bg"
+                android:divider="@null"
+                android:orientation="horizontal"
+                android:paddingTop="4dp" />
+        </RelativeLayout>
+
+        <!--<ImageView-->
+            <!--android:id="@+id/imageViewCamera"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_horizontal|bottom"-->
+            <!--android:src="@drawable/ic_camera_plus"-->
+            <!--android:visibility="gone" />-->
+    </FrameLayout>
+</android.support.v4.app.FragmentTabHost>
