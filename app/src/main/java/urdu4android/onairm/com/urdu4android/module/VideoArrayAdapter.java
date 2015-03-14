@@ -29,15 +29,7 @@ import urdu4android.onairm.com.urdu4android.volley.images.ImageCacheManager;
 public class VideoArrayAdapter extends ArrayAdapter<Video> {
 
 	private final String TAG = getClass().getSimpleName();
-
-    static class ViewHolder{
-        private TextView tvTitle;
-        private TextView tvIntro;
-        private NetworkImageView mImageView;
-    }
-
 	private static final SimpleDateFormat sdf = new SimpleDateFormat("M/d/yy h:mm a", Locale.US);
-
 	/**
 	 *  The data that drives the adapter
 	 */
@@ -48,6 +40,12 @@ public class VideoArrayAdapter extends ArrayAdapter<Video> {
 	 */
 	private VideoData mVideoData;
 
+
+    static class ViewHolder{
+        private TextView tvTitle;
+        private TextView tvIntro;
+        private NetworkImageView mImageView;
+    }
 
 	public VideoArrayAdapter(Context context, VideoData newData) {
 		super(context, R.layout.activity_video_list_item);
@@ -107,11 +105,10 @@ public class VideoArrayAdapter extends ArrayAdapter<Video> {
         return mVideoData;
     }
 
-    /**
-	 * Add the data to the current listview
-	 * @param newData
-	 * 			Data to be added to the listview
-	 */
+    public void clear(){
+        videoList.clear();
+    }
+
 	public void add(List<Video> newData)
 	{
 		if(!newData.isEmpty()){
@@ -121,8 +118,5 @@ public class VideoArrayAdapter extends ArrayAdapter<Video> {
 		}
 	}
 
-    public void clear(){
-        videoList.clear();
-    }
 
 }

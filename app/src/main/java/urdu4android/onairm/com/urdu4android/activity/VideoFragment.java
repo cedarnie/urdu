@@ -34,7 +34,7 @@ import urdu4android.onairm.com.urdu4android.tool.ScrollView.IBanner;
  */
 public class VideoFragment extends Fragment implements AdapterView.OnItemClickListener, PullToRefreshBase.OnRefreshListener2<ListView> , Response.Listener<VideoData>, Response.ErrorListener {
 
-    private final String TAG = "VideoFragment";
+    private final String TAG = VideoFragment.class.getSimpleName();
     private View contentView;
     private PullToRefreshListView pullListView;
     private TitleController titleController;

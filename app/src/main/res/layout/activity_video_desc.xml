@@ -21,7 +21,24 @@
             android:layout_marginLeft="5dp"
             android:layout_alignBottom="@+id/surfaceView_video"
             android:src="@drawable/abc_btn_radio_to_on_mtrl_015" />
-        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/refreshListView_video_comment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="#00000000"
+            android:divider="#19000000"
+            android:dividerPadding="1dp"
+            android:dividerHeight="1dp"     />
+        <!--style="@style/ptr_style"-->
+
+    </RelativeLayout>
 
 
 </LinearLayout>
