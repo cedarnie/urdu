@@ -42,7 +42,7 @@ public class TabActivity extends FragmentActivity implements ActionBarAware, Vie
     public static final int REQ_CHOOSE_TITLE = 6;
     public static final int DIALOG_UPDATE = 2;
     public static final int DIALOG_BACK = 3;
-    private static final String TAG = TabActivity.class.getSimpleName();
+    private final String TAG = getClass().getSimpleName();
     public static Integer[] needLoginTabId = new Integer[]{3}; // 点击"我"Tab页的进入登录页
     //    private static VersionResponse newestVersion;
     private static String cancelVersion;
@@ -76,8 +76,8 @@ public class TabActivity extends FragmentActivity implements ActionBarAware, Vie
         mTabWidget = (TabWidget) findViewById(android.R.id.tabs);
 
 
-        mTabHost.addTab(mTabHost.newTabSpec("live").setIndicator(makeIndicator(mTabWidget, R.string.live, new SelectDrawable(getResources(), R.drawable.ic_tab_work, R.drawable.ic_tab_work_off))),
-                NovelFragment.class, null);
+//        mTabHost.addTab(mTabHost.newTabSpec("live").setIndicator(makeIndicator(mTabWidget, R.string.live, new SelectDrawable(getResources(), R.drawable.ic_tab_work, R.drawable.ic_tab_work_off))),
+//                NovelFragment.class, null);
         mTabHost.addTab(mTabHost.newTabSpec("video").setIndicator(makeIndicator(mTabWidget, R.string.video, new SelectDrawable(getResources(), R.drawable.ic_tab_work, R.drawable.ic_tab_work_off))),
                 VideoFragment.class, null);
 
@@ -87,8 +87,8 @@ public class TabActivity extends FragmentActivity implements ActionBarAware, Vie
         mTabHost.addTab(mTabHost.newTabSpec("novel").setIndicator(makeIndicator(mTabWidget, R.string.novel, new SelectDrawable(getResources(), R.drawable.ic_tab_work, R.drawable.ic_tab_work_off))),
                 NovelFragment.class, null);
 
-        mTabHost.addTab(mTabHost.newTabSpec("poem").setIndicator(makeIndicator(mTabWidget, R.string.poem, new SelectDrawable(getResources(), R.drawable.ic_tab_work, R.drawable.ic_tab_work_off))),
-                NovelFragment.class, null);
+//        mTabHost.addTab(mTabHost.newTabSpec("poem").setIndicator(makeIndicator(mTabWidget, R.string.poem, new SelectDrawable(getResources(), R.drawable.ic_tab_work, R.drawable.ic_tab_work_off))),
+//                NovelFragment.class, null);
 
     }
 
@@ -107,11 +107,11 @@ public class TabActivity extends FragmentActivity implements ActionBarAware, Vie
         return view;
     }
 
-    @Override
-    public void onBackPressed() {
-        showDialogSafely(DIALOG_BACK);
-
-    }
+//    @Override
+//    public void onBackPressed() {
+//        showDialogSafely(DIALOG_BACK);
+//
+//    }
 
     @Override
     public TitleController getTitleController() {

@@ -1,5 +1,7 @@
 package urdu4android.onairm.com.urdu4android.volley;
 
+import android.util.Log;
+
 import java.io.UnsupportedEncodingException;
 
 import com.android.volley.NetworkResponse;
@@ -17,9 +19,11 @@ import com.google.gson.JsonSyntaxException;
  * 
  * @param <T>
  */
-public class GsonRequest<T> extends Request<T>{
+public class GsonRequest<T> extends Request<T> {
 
-	/**
+    private static final String TAG = GsonRequest.class.getSimpleName();
+
+    /**
 	 * Gson parser 
 	 */
 	private final Gson mGson;
@@ -64,6 +68,7 @@ public class GsonRequest<T> extends Request<T>{
 	protected Response<T> parseNetworkResponse(NetworkResponse response) {
 		try {
 			String json = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
+            Log.e(TAG+"-response string", json );
 			return Response.success(mGson.fromJson(json, mClass),
 					HttpHeaderParser.parseCacheHeaders(response));
 		} catch (UnsupportedEncodingException e) {

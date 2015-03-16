@@ -41,6 +41,7 @@ public class VideoFragment extends Fragment implements AdapterView.OnItemClickLi
     private VideoArrayAdapter adapter=null;
 
     AutoScrollViewBanner mBannerView;
+    ListView lv;
     ArrayList<IBanner>  listImg = new ArrayList<IBanner>();
 
 
@@ -67,7 +68,7 @@ public class VideoFragment extends Fragment implements AdapterView.OnItemClickLi
         });
         //解决手势冲突
 //        mSwipRefreshLayout.setVp(mBannerView.getViewFlipper());
-        ListView lv = pullListView.getRefreshableView();
+        lv  = pullListView.getRefreshableView();
         lv.addHeaderView(mBannerView);
 
         return view;
@@ -84,6 +85,7 @@ public class VideoFragment extends Fragment implements AdapterView.OnItemClickLi
             VideoManager.getInstance().requestGetVideos(this, this, 1);
         }else{
             pullListView.setAdapter(adapter);
+            mBannerView.initData(listImg);
         }
 
     }
@@ -101,7 +103,7 @@ public class VideoFragment extends Fragment implements AdapterView.OnItemClickLi
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Log.e("onItemClick Position>>>>>>>>>>>>>>>", String.valueOf(position));
+        Log.e(TAG+"-onItemClick Position>>>>>>>>>>>>>>>", String.valueOf(position));
         Object item = parent.getItemAtPosition(position);
         if (item instanceof Video) {
             Video video = (Video) item;
@@ -119,7 +121,7 @@ public class VideoFragment extends Fragment implements AdapterView.OnItemClickLi
         titleController.setTitleRight(R.drawable.abc_btn_switch_to_on_mtrl_00001,new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ProfileActivity.actionStart(getActivity(), null);
+                MoreActivity.actionStart(getActivity(), null);
             }
         });
 

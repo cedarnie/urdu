@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    >
+
+
+    <com.android.volley.toolbox.NetworkImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/imageView_novel"
+        android:src="@drawable/ic_launcher"
+        android:scaleType="centerCrop"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="news title"
+        android:textSize="16sp"
+        android:id="@+id/textView_title"
+        android:layout_alignTop="@+id/imageView_novel"
+        android:layout_toLeftOf="@+id/imageView_novel"
+        android:layout_toStartOf="@+id/imageView_novel"
+        android:layout_marginRight="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="introduction"
+        android:textSize="14sp"
+        android:id="@+id/textView_auther"
+        android:layout_below="@+id/textView_title"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        android:layout_toLeftOf="@+id/imageView_novel" />
+</RelativeLayout>

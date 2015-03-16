@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/subTitleBar"
+        layout="@layout/com_title_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:hint="@string/subject"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:id="@+id/editText_subject" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:inputType="textMultiLine"
+            android:background="@color/white"
+            android:gravity="left|top"
+            android:padding="10dp"
+            android:hint="@string/content_hint"
+            android:textSize="16sp"
+            android:id="@+id/editText_content"
+            android:layout_below="@+id/editText_subject"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/submit"
+            android:textColor="@color/white"
+            android:background="@color/urdu_red"
+            android:id="@+id/button_submit"
+            android:layout_below="@+id/editText_content"
+            android:layout_alignLeft="@+id/editText_content"
+            android:layout_alignStart="@+id/editText_content"
+            android:layout_alignRight="@+id/editText_content"
+            android:layout_marginTop="40dp" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

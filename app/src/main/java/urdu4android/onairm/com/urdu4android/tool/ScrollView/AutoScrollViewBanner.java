@@ -15,6 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 
+import com.android.volley.toolbox.NetworkImageView;
+
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +25,7 @@ import java.util.TimerTask;
 
 import urdu4android.onairm.com.urdu4android.R;
 import urdu4android.onairm.com.urdu4android.tool.Utils;
+import urdu4android.onairm.com.urdu4android.volley.images.ImageCacheManager;
 
 /**
  *  Filename:    AutoScrollViewBanner.java    Description:   
@@ -157,9 +160,12 @@ public class AutoScrollViewBanner extends RelativeLayout  {
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             position %= listImage.size();
-            WebImageView downloadImageView = new WebImageView(getContext());
-            downloadImageView.setDefaultResId(R.drawable.default_bigicon);
-//            downloadImageView.setCover(R.drawable.bg_banner_shadow);
+            // change WebImageView to NetworkImageView by nxs
+//            WebImageView downloadImageView = new WebImageView(getContext());
+//            downloadImageView.setDefaultResId(R.drawable.default_bigicon);
+////            downloadImageView.setCover(R.drawable.bg_banner_shadow);
+            NetworkImageView downloadImageView = new NetworkImageView(getContext());
+            downloadImageView.setDefaultImageResId(R.drawable.default_bigicon);
             final int index = position;
             downloadImageView.setOnClickListener(new OnClickListener() {
                 @Override
@@ -171,10 +177,13 @@ public class AutoScrollViewBanner extends RelativeLayout  {
             });
             if (TextUtils.isEmpty(listImage.get(position).getImageUrl())) {
                 downloadImageView.setScaleType(ImageView.ScaleType.CENTER);
-                downloadImageView.setDefaultResId(R.drawable.default_bigicon);
+//                downloadImageView.setDefaultResId(R.drawable.default_bigicon);
+                downloadImageView.setDefaultImageResId(R.drawable.default_bigicon);
             } else {
                 downloadImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                downloadImageView.setImageUrl(listImage.get(position).getImageUrl());
+//                downloadImageView.setImageUrl(listImage.get(position).getImageUrl());
+                downloadImageView.setImageUrl(listImage.get(position).getImageUrl(), ImageCacheManager.getInstance().getImageLoader());
+
             }
             container.addView(downloadImageView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             return downloadImageView;

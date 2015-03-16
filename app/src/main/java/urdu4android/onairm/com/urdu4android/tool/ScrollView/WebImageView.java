@@ -18,9 +18,6 @@ import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 import com.squareup.picasso.Transformation;
 
-//import com.squareup.picasso.Picasso;
-//import com.squareup.picasso.RequestCreator;
-//import com.squareup.picasso.Transformation;
 
 /**
  * Created by 6a209 on 14/11/10.

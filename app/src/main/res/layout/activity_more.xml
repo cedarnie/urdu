@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/subTitleBar"
+        layout="@layout/com_title_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="@color/white">
+
+        <!--<com.makeramen.roundedimageview.RoundedImageView-->
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/imageView_avatar"
+            android:src="@drawable/bingbing"
+            android:scaleType="centerCrop"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="http://dosti...com"
+            android:textSize="15sp"
+            android:id="@+id/textView_website"
+            android:background="@color/white"
+            android:padding="13dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="cust_service@Urdocri.com.cn"
+            android:textSize="15sp"
+            android:id="@+id/textView_email"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:padding="13dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ShortMsg"
+            android:textSize="15sp"
+            android:id="@+id/textView_message"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:padding="13dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="86-18888888888"
+            android:textSize="15sp"
+            android:id="@+id/textView_tel"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:padding="13dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Feedback"
+            android:textSize="15sp"
+            android:id="@+id/textView_feedback"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:padding="13dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="About us"
+            android:textSize="15sp"
+            android:id="@+id/textView_aboutus"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:padding="13dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="About this APP"
+            android:textSize="15sp"
+            android:id="@+id/textView_aboutapp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:padding="13dp"/>
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -6,8 +6,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.android.volley.toolbox.NetworkImageView;
+
 import urdu4android.onairm.com.urdu4android.R;
 import urdu4android.onairm.com.urdu4android.framework.TitleController;
+import urdu4android.onairm.com.urdu4android.volley.images.ImageCacheManager;
 
 public class ProfileActivity extends Activity  {
 
@@ -19,6 +22,10 @@ public class ProfileActivity extends Activity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        NetworkImageView avatar = (NetworkImageView)findViewById(R.id.imageView_avatar);
+//        avatar.setDefaultImageResId(R.drawable.bingbing);
+        avatar.setImageUrl("http://7vznzz.com1.z0.glb.clouddn.com/2.jpg", ImageCacheManager.getInstance().getImageLoader());
+
         titleController = new TitleController(this, findViewById(R.id.subTitleBar));
     }
 

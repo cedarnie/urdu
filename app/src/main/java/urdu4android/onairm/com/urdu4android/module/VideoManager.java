@@ -18,7 +18,7 @@ public class VideoManager {
 	private final String TAG = getClass().getSimpleName();
 	private static VideoManager mInstance;
 
-	private static String request_url = Config.SERVER_URL+"/getNews";
+	private static String request_url = Config.SERVER_URL + Config.REQUEST_NEWS;
 	private static String VIDEO_DEFAULT_SEARCH_TERM = "CapTech";
 	private static String VIDEO_QUERY = "q";
 	private static String VIDEO_INCLUDE_ENTITIES = "include_entities";
@@ -44,7 +44,7 @@ public class VideoManager {
 				.appendQueryParameter(VIDEO_PAGE_NUM, "" + pageNum);
 
 		String uri = uriBuilder.build().toString();
-		Log.i(TAG, "getVideoForHashtag: uri = " + uri);
+		Log.i(TAG +"getVideoForHashtag: uri  " ,  uri);
 
 		GsonRequest<VideoData> request = new GsonRequest<VideoData>(Method.GET
 				, uri

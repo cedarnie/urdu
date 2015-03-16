@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SEND_SMS"/>
 
     <application
         android:name=".MainApplication"
@@ -46,6 +48,14 @@
             android:screenOrientation="portrait"
             android:label="@string/profile" />
 
+        <activity
+            android:name=".activity.MoreActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/more" />
+        <activity
+            android:name=".activity.FeedbackActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/feedback" />
         <activity
             android:name=".activity.VideoDescActivity"
             android:screenOrientation="portrait"

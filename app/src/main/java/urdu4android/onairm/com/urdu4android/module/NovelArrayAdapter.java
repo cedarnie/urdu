@@ -1,10 +1,5 @@
 package urdu4android.onairm.com.urdu4android.module;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,41 +8,42 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.android.volley.Response.ErrorListener;
-import com.android.volley.Response.Listener;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.NetworkImageView;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import urdu4android.onairm.com.urdu4android.R;
 import urdu4android.onairm.com.urdu4android.volley.images.ImageCacheManager;
 
 
-//public class VideoArrayAdapter extends ArrayAdapter<String> implements Listener<VideoData>, ErrorListener {
-public class VideoArrayAdapter extends ArrayAdapter<Video> {
+public class NovelArrayAdapter extends ArrayAdapter<Novel> {
 
 	private final String TAG = getClass().getSimpleName();
 	private static final SimpleDateFormat sdf = new SimpleDateFormat("M/d/yy h:mm a", Locale.US);
 	/**
 	 *  The data that drives the adapter
 	 */
-	private  List<Video> videoList;
+	private  List<Novel> novelList;
 
 	/**
 	 * The last network response containing twitter metadata
 	 */
-	private VideoData mVideoData;
+	private NovelData mNovelData;
 
 
     static class ViewHolder{
         private TextView tvTitle;
-        private TextView tvIntro;
+        private TextView tvAuther;
         private NetworkImageView mImageView;
     }
 
-	public VideoArrayAdapter(Context context, VideoData newData) {
-		super(context, R.layout.activity_video_list_item);
-        videoList = newData.getVideos();
-        mVideoData = newData;
+	public NovelArrayAdapter(Context context, NovelData newData) {
+		super(context, R.layout.activity_novel_list_item);
+        novelList = newData.getNovels();
+        mNovelData = newData;
 	}
 
 	@Override
@@ -58,12 +54,12 @@ public class VideoArrayAdapter extends ArrayAdapter<Video> {
 
 		if(v == null){
 			LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			v = inflater.inflate(R.layout.activity_video_list_item, null);
+			v = inflater.inflate(R.layout.activity_novel_list_item, null);
 
 			viewHolder = new ViewHolder();
             viewHolder.tvTitle = (TextView) v.findViewById(R.id.textView_title);
-            viewHolder.tvIntro = (TextView) v.findViewById(R.id.textView_desc);
-            viewHolder.mImageView = (NetworkImageView) v.findViewById(R.id.imageView_video);
+            viewHolder.tvAuther = (TextView) v.findViewById(R.id.textView_auther);
+            viewHolder.mImageView = (NetworkImageView) v.findViewById(R.id.imageView_novel);
 
 			v.setTag(viewHolder);
 
@@ -71,11 +67,12 @@ public class VideoArrayAdapter extends ArrayAdapter<Video> {
 			viewHolder = (ViewHolder) v.getTag();
 		}
 
-		Video video = videoList.get(position);
-		if(video != null){
-            viewHolder.tvTitle.setText(video.getTitle());
-            viewHolder.tvIntro.setText(video.getIntro());
-            viewHolder.mImageView.setImageUrl(video.getImgUrl(), ImageCacheManager.getInstance().getImageLoader());
+		Novel novel = novelList.get(position);
+		if(novel != null){
+            viewHolder.tvTitle.setText(novel.getTitle());
+            viewHolder.tvAuther.setText(novel.getAuthor());
+            viewHolder.mImageView.setDefaultImageResId(R.drawable.bingbing);
+           // viewHolder.mImageView.setImageUrl(novel.getImgUrl(), ImageCacheManager.getInstance().getImageLoader());
 		}
 
 		return v;
@@ -83,12 +80,12 @@ public class VideoArrayAdapter extends ArrayAdapter<Video> {
 
 	@Override
 	public int getCount() {
-        return videoList.size();
+        return novelList.size();
 	}
 
     @Override
-    public Video getItem(int position) {
-        return videoList.get(position);
+    public Novel getItem(int position) {
+        return novelList.get(position);
     }
 
     private String formatDisplayDate(Date date){
@@ -98,19 +95,19 @@ public class VideoArrayAdapter extends ArrayAdapter<Video> {
 		return "";
 	}
 
-    public VideoData getmVideoData() {
-        return mVideoData;
+    public NovelData getmNovelData() {
+        return mNovelData;
     }
 
     public void clear(){
-        videoList.clear();
+        novelList.clear();
     }
 
-	public void add(List<Video> newData)
+	public void add(List<Novel> newData)
 	{
 		if(!newData.isEmpty()){
-            videoList.addAll(newData);
-            Log.e(TAG+"-videoList size:", String.valueOf(videoList.size()));
+            novelList.addAll(newData);
+            Log.e(TAG+"-novelList size:", String.valueOf(novelList.size()));
 			notifyDataSetChanged();
 		}
 	}

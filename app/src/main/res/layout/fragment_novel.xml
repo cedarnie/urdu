@@ -25,25 +25,6 @@
             android:layout_height="match_parent" />
              <!--style="@style/ptr_style"-->
 
-        <FrameLayout
-            android:id="@+id/emptyFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:focusable="false"
-            android:focusableInTouchMode="true"
-            android:foregroundGravity="center">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentTop="true">
-
-                <FrameLayout
-                    android:id="@+id/filterFrameLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-            </RelativeLayout>
-        </FrameLayout>
-
     </RelativeLayout>
 
 </LinearLayout>
