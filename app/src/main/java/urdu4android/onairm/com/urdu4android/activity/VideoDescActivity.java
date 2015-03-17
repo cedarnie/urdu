@@ -7,13 +7,24 @@ import android.graphics.drawable.ColorDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.text.Layout;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.SeekBar;
+import android.support.v4.view.ViewPager.LayoutParams;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -22,26 +33,38 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import urdu4android.onairm.com.urdu4android.R;
 import urdu4android.onairm.com.urdu4android.framework.TitleController;
-import urdu4android.onairm.com.urdu4android.module.Comment;
 import urdu4android.onairm.com.urdu4android.module.CommentArrayAdapter;
 import urdu4android.onairm.com.urdu4android.module.CommentData;
 import urdu4android.onairm.com.urdu4android.module.CommentManager;
+
 import urdu4android.onairm.com.urdu4android.module.VideoArrayAdapter;
 import urdu4android.onairm.com.urdu4android.module.VideoManager;
+import urdu4android.onairm.com.urdu4android.tool.Player;
 
-public class VideoDescActivity extends Activity implements View.OnClickListener,  PullToRefreshBase.OnRefreshListener2<ListView> , Response.Listener<CommentData>, Response.ErrorListener {
+public class VideoDescActivity extends Activity implements View.OnClickListener, PullToRefreshBase.OnRefreshListener2<ListView> , Response.Listener<CommentData>, Response.ErrorListener {
 
     private final String TAG = VideoDescActivity.class.getSimpleName();
     private static final String EXTRA_PENDING_INTENT = "pending_intent";
     private TitleController titleController;
-    private ImageButton btnplay;
-    private MediaPlayer mediaPlayer;
-    private SurfaceView surfaceView;
-    private int position;
+//    private ImageButton btnplay;
+//    private MediaPlayer mediaPlayer;
+//    private SurfaceView surfaceView;
+//    private int position;
 
     private CommentArrayAdapter adapter=null;
     private PullToRefreshListView pullListView;
 
+
+    private SurfaceView surfaceView;
+    private ImageButton btnPause, btnPlayUrl, btnStop;
+    private SeekBar skbProgress;
+    private Player player;
+
+    private LinearLayout layoutOperation;
+    private ImageButton btnFullscreen;
+
+    private int fullWidth;
+    private int fullHeight;
 
 
 
@@ -56,41 +79,24 @@ public class VideoDescActivity extends Activity implements View.OnClickListener,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_desc);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);   //全屏
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); // 应用运行时，保持屏幕高亮，不锁屏
         titleController = new TitleController(this, findViewById(R.id.subTitleBar));
 
-        btnplay=(ImageButton)this.findViewById(R.id.btnplay);
-        btnplay.setOnClickListener(this);
-        mediaPlayer=new MediaPlayer();
-        surfaceView=(SurfaceView) this.findViewById(R.id.surfaceView_video);
-        //设置SurfaceView自己不管理的缓冲区
-        surfaceView.getHolder().setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-        surfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
-            @Override
-            public void surfaceDestroyed(SurfaceHolder holder) {
 
-            }
+        fullWidth=getWindowManager().getDefaultDisplay().getWidth();
+        fullHeight=getWindowManager().getDefaultDisplay().getHeight();
 
-            @Override
-            public void surfaceCreated(SurfaceHolder holder) {
-                if (position>0) {
-                    try {
-                        //开始播放
-                        play();
-                        //并直接从指定位置开始播放
-                        mediaPlayer.seekTo(position);
-                        position=0;
-                    } catch (Exception e) {
-                        // TODO: handle exception
-                    }
-                }
-            }
-            @Override
-            public void surfaceChanged(SurfaceHolder holder, int format, int width,
-                                       int height) {
+        surfaceView = (SurfaceView) this.findViewById(R.id.surfaceView_video);
+        layoutOperation = (LinearLayout)findViewById(R.id.layout_operation);
+        btnPlayUrl = (ImageButton) this.findViewById(R.id.button_play);
+        btnFullscreen = (ImageButton) this.findViewById(R.id.button_fullscreen);
 
-            }
-        });
-
+        skbProgress = (SeekBar) this.findViewById(R.id.skbProgress);
+        skbProgress.setOnSeekBarChangeListener(new SeekBarChangeEvent());
+        String url = "/storage/emulated/0/Download/test-dance.3gp";
+        player = new Player(surfaceView, skbProgress, layoutOperation, btnPlayUrl, btnFullscreen,url,fullWidth,fullHeight);
 
         pullListView = (PullToRefreshListView) findViewById(R.id.refreshListView_video_comment);
         pullListView.setOnRefreshListener(this);
@@ -109,48 +115,15 @@ public class VideoDescActivity extends Activity implements View.OnClickListener,
         }else{
             pullListView.setAdapter(adapter);
         }
-
     }
-
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnplay:
-                play();
-                break;
-            default:
-                break;
+    protected void onDestroy() {   //activity销毁后，释放资源
+        super.onDestroy();
+        if (player != null) {
+            player.stop();
         }
-
-    }
-    @Override
-    protected void onPause() {
-        //先判断是否正在播放
-        if (mediaPlayer.isPlaying()) {
-            //如果正在播放我们就先保存这个播放位置
-            position=mediaPlayer.getCurrentPosition()
-            ;
-            mediaPlayer.stop();
-        }
-        super.onPause();
-    }
-
-    private void play() {
-        try {
-            mediaPlayer.reset();
-            mediaPlayer
-                    .setAudioStreamType(AudioManager.STREAM_MUSIC);
-            //设置需要播放的视频
-            mediaPlayer.setDataSource("/storage/emulated/0/Download/test-dance.3gp");
-            //把视频画面输出到SurfaceView
-            mediaPlayer.setDisplay(surfaceView.getHolder());
-            mediaPlayer.prepare();
-            //播放
-            mediaPlayer.start();
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
+        System.gc();
     }
 
     @Override
@@ -182,6 +155,45 @@ public class VideoDescActivity extends Activity implements View.OnClickListener,
             pullListView.onRefreshComplete();
         }
 
+    }
+
+
+    @Override
+    public void onClick(View v) {
+//        switch (v.getId()){
+//            case R.id.button_fullscreen:
+//                ViewGroup.LayoutParams lp = surfaceView.getLayoutParams();
+//                lp.height = getWindowManager().getDefaultDisplay().getWidth();
+//                lp.width = getWindowManager().getDefaultDisplay().getHeight();
+//                surfaceView.setLayoutParams(lp);
+//                break;
+//
+//            default:
+//                break;
+//        }
+    }
+
+    class SeekBarChangeEvent implements SeekBar.OnSeekBarChangeListener {
+        int progress;
+
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress,
+                                      boolean fromUser) {
+            // 原本是(progress/seekBar.getMax())*player.mediaPlayer.getDuration()
+            this.progress = progress * player.mediaPlayer.getDuration()
+                    / seekBar.getMax();
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+            // seekTo()的参数是相对与影片时间的数字，而不是与seekBar.getMax()相对的数字
+            player.mediaPlayer.seekTo(progress);
+        }
     }
 }
 

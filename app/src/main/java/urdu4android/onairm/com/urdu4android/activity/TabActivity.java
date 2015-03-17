@@ -76,8 +76,8 @@ public class TabActivity extends FragmentActivity implements ActionBarAware, Vie
         mTabWidget = (TabWidget) findViewById(android.R.id.tabs);
 
 
-//        mTabHost.addTab(mTabHost.newTabSpec("live").setIndicator(makeIndicator(mTabWidget, R.string.live, new SelectDrawable(getResources(), R.drawable.ic_tab_work, R.drawable.ic_tab_work_off))),
-//                NovelFragment.class, null);
+        mTabHost.addTab(mTabHost.newTabSpec("live").setIndicator(makeIndicator(mTabWidget, R.string.live, new SelectDrawable(getResources(), R.drawable.ic_tab_work, R.drawable.ic_tab_work_off))),
+                LiveFragment.class, null);
         mTabHost.addTab(mTabHost.newTabSpec("video").setIndicator(makeIndicator(mTabWidget, R.string.video, new SelectDrawable(getResources(), R.drawable.ic_tab_work, R.drawable.ic_tab_work_off))),
                 VideoFragment.class, null);
 

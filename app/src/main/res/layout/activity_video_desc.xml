@@ -6,22 +6,27 @@
     <include
         android:id="@+id/subTitleBar"
         layout="@layout/com_title_bar" />
-
-    <RelativeLayout
+    <include
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <SurfaceView
-            android:id="@+id/surfaceView_video"
-            android:layout_width="match_parent"
-            android:layout_height="360px" />
-        <ImageButton
-            android:id="@+id/btnplay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_alignBottom="@+id/surfaceView_video"
-            android:src="@drawable/abc_btn_radio_to_on_mtrl_015" />
-    </RelativeLayout>
+        android:layout_height="200dp"
+        android:id="@+id/video_play_include"
+        layout="@layout/video_play" />
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+        <!--<SurfaceView-->
+            <!--android:id="@+id/surfaceView_video"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="360px" />-->
+        <!--<ImageButton-->
+            <!--android:id="@+id/btnplay"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:layout_alignBottom="@+id/surfaceView_video"-->
+            <!--android:src="@drawable/abc_btn_radio_to_on_mtrl_015" />-->
+    <!--</RelativeLayout>-->
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent">
+
+    <SurfaceView
+        android:id="@+id/surfaceView_video"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"></SurfaceView>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_gravity="bottom"
+        android:background="@color/half_transparent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/layout_operation"
+            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <ImageButton
+                android:padding="5dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/button_play"></ImageButton>
+
+            <SeekBar
+                android:paddingTop="5dp"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/button_play"
+                android:id="@+id/skbProgress"
+                android:max="100"></SeekBar>
+
+            <ImageButton
+                android:padding="5dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src= "@drawable/btn_fullscreen"
+                android:id="@+id/button_fullscreen"
+                android:layout_marginRight="5dp"
+                android:layout_alignParentRight="true">
+            </ImageButton>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</FrameLayout>
